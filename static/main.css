@@ -56,7 +56,6 @@ a:active {
     background-color: rgb(212, 209, 209);
 }
 
-
 /*RESPONSIVE DESDING*/
 
 
@@ -64,6 +63,7 @@ a:active {
     #card-friends{
         position:relative;
         width: 100%;
+        
     }
 
     body{

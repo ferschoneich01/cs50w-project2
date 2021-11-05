@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Login | Moon Message</title>
+	<title>Register | Moon Message</title>
    <!--Made with love by Mutiullah Samim -->
    
 	<!--Bootsrap 4 CDN-->
@@ -16,22 +16,18 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 	<!--Custom styles-->
-	<link rel="stylesheet" href="{{url_for('static', filename='login.css')}}">
+	<link rel="stylesheet" href="{{url_for('static', filename='register.css')}}">
 </head>
 <body>
 <div class="container">
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
 			<div class="card-header">
-				<h3>Sign In</h3>
-				<div class="d-flex justify-content-end social_icon">
-					<span><i class="fab fa-facebook-square"></i></span>
-					<span><i class="fab fa-google-plus-square"></i></span>
-					<span><i class="fab fa-twitter-square"></i></span>
-				</div>
+				<h3>Registration</h3>
+				
 			</div>
 			<div class="card-body">
-				<form action="/login" method="post">
+				<form action="/register" method="POST">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -39,28 +35,42 @@
 						<input name="username" type="text" class="form-control" placeholder="username">
 						
 					</div>
+
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
 						<input name="password" type="password" class="form-control" placeholder="password">
 					</div>
+
+                    <div class="input-group form-group">
+						<input name="fullname" type="text" class="form-control" placeholder="fullname">
+					</div>
+
+                    <div class="input-group form-group">
+						<input name="email" type="text" class="form-control" placeholder="email">
+					</div>
+
+                    <select name="select">
+                        <option value="sex">Sex</option>
+                        <option value="M">M</option>
+                        <option value="F" selected>F</option>
+                    </select>
+
+                    <hr>
+                    <div class="input-group form-group">
+						<input name="image" type="text" class="form-control" placeholder="image">
+					</div>
+
 					<div class="row align-items-center remember">
 						<input type="checkbox">Remember Me
 					</div>
 					<div class="form-group">
-						<input type="submit" value="Login" class="btn float-right login_btn">
+						<input type="submit" value="Register" class="btn float-right login_btn" style="width:100%; margin-top: 5px;">
 					</div>
 				</form>
 			</div>
-			<div class="card-footer">
-				<div class="d-flex justify-content-center links">
-					Don't have an account?<button type="submit">Sign Up</button>
-				</div>
-				<div class="d-flex justify-content-center">
-					<a href="#">Forgot your password?</a>
-				</div>
-			</div>
+			
 		</div>
 	</div>
 </div>
