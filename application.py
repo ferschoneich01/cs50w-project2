@@ -76,7 +76,7 @@ def login():
         
         photo = user[0]["image"]
         friends=[]
-        friends.append(['https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Noun_Project_Community_icon_986471.svg/1024px-Noun_Project_Community_icon_986471.svg.png','Community Moon Message'])
+        friends.append(['https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Noun_Project_Community_icon_986471.svg/1024px-Noun_Project_Community_icon_986471.svg.png','Community'])
         # Redirect user to home page
         return render_template("index.html",username=username,photo=photo,friends=friends)
     else:

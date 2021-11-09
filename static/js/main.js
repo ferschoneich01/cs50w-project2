@@ -1,6 +1,6 @@
 
 let hoy = new Date();
-
+var Selfuser = "";
 document.addEventListener('DOMContentLoaded', () => {
     var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
     socket.on('connect', () => {
@@ -37,16 +37,15 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function setUsername(user) {
-    localStorage.setItem("username",user);
+   localStorage.setItem("username",user);
     var hour = hoy.getHours() + ':' + hoy.getMinutes();
     var newMessage = {
         username:user,
         msg: $('#mi-msj').val(),
-        group: $('#Username-message').val(),
+        group: $('#group-name').val(),
         hour: hour
     };
 
-    console.log(newMessage);
     MsgList.push(newMessage);
     setMessage(MsgList);
     
@@ -68,20 +67,24 @@ function setMessage(newMessage){
 }
 
 function MostrarChat(name, img, group) {
-    $("#Username-message").text(name);
+    
+    $("#Username-message").text(group);
+    $("#group-name").val(group);
+    alert($("#group-name").val());
     $("#img-message").attr("src", img);
     var list = getMessage();
     for(var i = 0; i < list.length; i++){
         if(list[i].hour == ""){
             list[i].hour = hoy.getHours() + ':' + hoy.getMinutes();
         }
-        if (list[i].username == $('#username').val() && list[i].group == group) {
+        if (list[i].username == name && list[i].group == group) {
             $('#texto-msj').append('<li style="list-style:none; widht:100%; margin:5px; height:auto;"><div style="float:right; max-width:95%; min-width:15%;  padding-left:5px; padding-right:5px; font-family: Arial, Helvetica, sans-serif; background:#ffff;  height:auto; border-radius:5px;">' + '<div style="color:green;">' +"You"+ '</div> <div style="margin-right:5px;">' + list[i].msg + '</div><div style="float:right; color:gray; font-size:10px; margin-top:5px; margin-right:5px;">'+list[i].hour+'</div></div></li>'); // insertamos el contenido de a la lista, es decir el texto-msj.
     
-        } else if(list[i].group == group){
+        } else if(list[i].username != name && list[i].group == group){
+            
             $('#texto-msj').append('<li style="list-style:none; margin:5px; widht:100%; height:auto;"><div style="float:left; max-width:95%; min-width:15%; padding-left:5px; padding-right:5px; font-family: Arial, Helvetica, sans-serif; background:#ffff; height:auto; border-radius:5px;">' + '<div style="color:blue;">' + list[i].username + '</div> <div style="margin-right:5px;">' + list[i].msg + '</div><div style="float:right; color:gray; font-size:10px; margin-top:5px; margin-right:5px;">'+list[i].hour+'</div></div></li>'); // insertamos el contenido de a la lista, es decir el texto-msj.
         }
-       
+       console.log(list[i].username + " y " + name + "con "+list[i].group+" y "+group);
     }
     $("#message").children().show();
 
