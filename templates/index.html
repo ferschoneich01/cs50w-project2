@@ -71,6 +71,7 @@
                                                         class="UserIcon" src="{{f.0}}" alt=""></div>
                                                 <div class="col" style="margin-top: 5px; padding-left: 0px;">
                                                     <h5 id="Username">{{f.1}}</h5>
+                                                    <input id="group-name" value="{{f.1}}" style=" margin:0px;  padding:0px; background-color: aliceblue; width: 0px; height: 0px; border: aliceblue 0px;">
                                                 </div>
                                             </div>
                                         </a>
@@ -140,14 +141,16 @@
               <h5 class="modal-title">Create New Group</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-              <h5>Name:</h5>
-              <input style="width: 100%; margin:5px;" type="text" placeholder="Group name">
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Create Group</button>
-            </div>
+            <form action="/create-group" method="post">
+                <div class="modal-body">
+                    <h5>Name:</h5>
+                    <input style="width: 100%; margin:5px;" type="text" placeholder="Group name">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Create Group</button>
+                  </div>
+            </form>
           </div>
         </div>
       </div>

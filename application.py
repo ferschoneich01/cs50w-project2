@@ -27,19 +27,33 @@ db = scoped_session(sessionmaker(bind=engine))
 
 # Recibirá los nuevos mensajes y los emitirá por socket.
 @socketio.on('message') # recibir msj del lado del cliente al servidor (EVENTO) . 
-def handle_Message(msg): # Comenzamos a manejar el msj.
-    #print('Mensaje: ' + msg + 'Username: '+userName) #mensaje en terminal.
-    send(msg, broadcast = True) #mensaje al lado del cliente con su transmision.
+def handle_Message(msg): # Comenzamos a manejar el msj.  
+    send(msg, broadcast = True) 
 
-@socketio.on('left') # recibir msj del lado del cliente al servidor (EVENTO) . 
-def left_Message():
-    redirect("/") 
 
 @app.route("/")
 @login_required
 def index():
+    groups = db.execute("SELECT * FROM user_group ug INNER JOIN groups g ON g.id_group = ug.id_group INNER JOIN users u ON ug.id_user = "+session["id_user"]+"").fetchall()    
+    friends=[]
+    for i,g in groups:
+        friends.append([groups[i]["photo"],groups[i]["name"]])
     return render_template("index.html")
 
+@app.route("/create-group")
+@login_required
+def createGroup():
+    if request.method == "POST":
+        groupName = request.form.get("groupName")
+        photo = request.form.get("photo")
+        id_user = session["id_user"]
+        # Query database for username
+        db.execute("INSERT INTO groups (name,photo) VALUES ('"+str(groupName)+"','"+str(photo)+"'")
+        db.commit()
+        group = db.execute("SELECT * FROM groups WHERE name = '"+groupName+"'").fetchall()
+        db.execute("INSERT INTO user_group (id_user,id_group) VALUES ("+(id_user)+","+(group[0]["id_group"])+"")  
+        # Redirect user to home page
+        return redirect('/')
 
 @app.route("/login", methods=["POST","GET"])
 def login():
@@ -73,10 +87,13 @@ def login():
         session["id_user"] = rows[0]["id_user"]
         user = db.execute("SELECT * FROM users WHERE username = '"+username+"'").fetchall() 
         username = user[0]["fullname"]
-        
         photo = user[0]["image"]
+        
+        groups = db.execute("SELECT * FROM user_group ug INNER JOIN groups g ON g.id_group = ug.id_group INNER JOIN users u ON ug.id_user = "+session["id_user"]+"").fetchall()
+        
         friends=[]
-        friends.append(['https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Noun_Project_Community_icon_986471.svg/1024px-Noun_Project_Community_icon_986471.svg.png','Community'])
+        for i,g in groups:
+            friends.append([groups[i]["photo"],groups[i]["name"]])
         # Redirect user to home page
         return render_template("index.html",username=username,photo=photo,friends=friends)
     else:
@@ -123,7 +140,6 @@ def register():
         print(fullname)
         print(email)
         print(image)
-        
         # Query database for username
         db.execute("INSERT INTO users (username,password,fullname,email,sex,image) VALUES ('"+str(username)+"','"+str(password)+"','"+str(fullname)+"','"+str(email)+"','"+str(sex)+"','"+str(image)+"')")
         db.commit()
