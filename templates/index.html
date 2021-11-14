@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lunar Message</title>
     <script src="../static/js/main.js"></script>
-    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
 
     <link rel="shortcut icon" type="image/x-icon"
@@ -29,11 +30,12 @@
                         <div class="row">
                             <div class="col">
                                 <div class="row">
-                                    <div class="col-2"><img class="UserIcon"
-                                            src="{{photo}}" alt="">
+                                    <div class="col-2"><img class="UserIcon" src="{{photo}}" alt="">
                                     </div>
                                     <div class="col" style="margin-top: 15px;">
-                                        <h5>{{username}} <input id="username" value="{{username}}" style=" margin:0px;  padding:0px; background-color: aliceblue; width: 0px; height: 0px; border: aliceblue 0px;"></h5>
+                                        <h5>{{username}} <input id="username" value="{{username}}"
+                                                style=" margin:0px;  padding:0px; background-color: aliceblue; width: 0px; height: 0px; border: aliceblue 0px;">
+                                        </h5>
                                     </div>
                                 </div>
                             </div>
@@ -49,7 +51,9 @@
                                     placeholder="look for your friends " type="text">
                             </div>
                             <div class="col-4" style="font-size: small; margin-top: 5px;">
-                                <button data-bs-toggle="modal" data-bs-target="#exampleModal" style="font-size:13px; width:100px;" class="btn button btn-success">New Group</button>
+                                <button data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                    style="font-size:13px; width:100px;" class="btn button btn-success">New
+                                    Group</button>
                             </div>
                         </div>
                     </div>
@@ -65,13 +69,14 @@
                             <div class="col card">
                                 <div class="row">
                                     <div class="col">
-                                        <a onclick="MostrarChat('{{username}}','{{f.0}}' ,'{{f.1}}')"href="#">
+                                        <a onclick="MostrarChat('{{username}}','{{f.0}}' ,'{{f.1}}')" href="#">
                                             <div class="row">
                                                 <div class="col-2" style="margin-right: 20px;"><img id="img-friend"
                                                         class="UserIcon" src="{{f.0}}" alt=""></div>
                                                 <div class="col" style="margin-top: 5px; padding-left: 0px;">
                                                     <h5 id="Username">{{f.1}}</h5>
-                                                    <input id="group-name" value="{{f.1}}" style=" margin:0px;  padding:0px; background-color: aliceblue; width: 0px; height: 0px; border: aliceblue 0px;">
+                                                    <input id="group-name" value="{{f.1}}"
+                                                        style=" margin:0px;  padding:0px; background-color: aliceblue; width: 0px; height: 0px; border: aliceblue 0px;">
                                                 </div>
                                             </div>
                                         </a>
@@ -98,10 +103,13 @@
                                         </div>
                                         <div class="col" style="margin-top: 15px; margin-left: 0px;">
                                             <h5 id="Username-message"></h5>
-                                            
+
                                         </div>
                                         <div class="col" style="margin-top: 15px; ">
-                                            <button style="float:right; border-radius: 40px;" class="btn button btn-success"id="Salir"><img style="width: 20px; height: 20px; margin-bottom: 4px;" src="https://res.cloudinary.com/dzlbg8ni6/image/upload/v1635567686/keyboard-left-arrow-button_icon-icons.com_72692_ibxync.png"></button>
+                                            <button style="float:right; border-radius: 40px;"
+                                                class="btn button btn-success" id="Salir"><img
+                                                    style="width: 20px; height: 20px; margin-bottom: 4px;"
+                                                    src="https://res.cloudinary.com/dzlbg8ni6/image/upload/v1635567686/keyboard-left-arrow-button_icon-icons.com_72692_ibxync.png"></button>
                                         </div>
                                     </div>
                                 </div>
@@ -110,21 +118,25 @@
                     </div>
                     <!--end User perfil-->
 
-                    <div id="texto-msj" class="card Scroll" 
+                    <div id="texto-msj" class="card Scroll"
                         style=" background:rgb(211, 210, 209); height:425px; width:100%; overflow:auto; border: 1px solid black; height: 420px;  margin-top: 8px;">
-                            <!--MENSAJES-->
-                        
+                        <!--MENSAJES-->
+
                     </div>
 
                     <div style="position:absolute; width: 100%; top: 492px; margin:0px;">
                         <div class="row">
                             <div class="col">
-                                <input id="mi-msj"style="width: 100%; margin-top: 7px; height: 35px; border-radius: 20px;" type="text" value=""
-                                    placeholder="write your message">
+                                <input id="mi-msj"
+                                    style="width: 100%; margin-top: 7px; height: 35px; border-radius: 20px;" type="text"
+                                    value="" placeholder="write your message">
                             </div>
                             <div class="col-2" style="padding-left: 0px;">
                                 <button class="btn button btn-success" id="Enviar" onclick="setUsername('{{username}}')"
-                                    type="submit" style="margin-top:5px; width: 80px; height: 40px; border-radius: 20px;"><img src="https://res.cloudinary.com/dzlbg8ni6/image/upload/v1635299935/send_120237_khktkv.png" alt=""></button>
+                                    type="submit"
+                                    style="margin-top:5px; width: 80px; height: 40px; border-radius: 20px;"><img
+                                        src="https://res.cloudinary.com/dzlbg8ni6/image/upload/v1635299935/send_120237_khktkv.png"
+                                        alt=""></button>
                             </div>
                         </div>
                     </div>
@@ -134,30 +146,62 @@
         </div>
     </div>
 
+
+
+
+
+
     <div id="exampleModal" class="modal" tabindex="-1">
         <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Create New Group</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Create New Group</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="/create-group" method="post">
+                    <div class="modal-body">
+                        <h5>Name:</h5>
+                        <input style="width: 100%; margin:5px;" type="text" placeholder="Group name">
+                        <!-- CONTAINER CLASS TO CENTER THE CARD ELEMENT -->
+                        <div class="col">
+                            <div class="card">
+                                <span class="border-0 rounded">
+                                    <h5 class="card-header text-center text-light" style="background-color:#0a868e">
+                                        Imagen del grupo:</h5>
+
+                                    <div class="card-body">
+
+                                        <div class="form-group">
+                                            <center><img class="img-thumbnail" id="img-preview"></center>
+                                            <input type="file" class="form-control-file" id="img-uploader">
+                                            <progress id="img-upload-bar" value="0" max="100"
+                                                style="width: 100%"></progress>
+                                        </div>
+
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                        <h5>Image:</h5>
+                        <input style="width: 100%; margin:5px;" id="photo" name="photo" type="text"
+                            placeholder="Group Image">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Create Group</button>
+                    </div>
+                </form>
             </div>
-            <form action="/create-group" method="post">
-                <div class="modal-body">
-                    <h5>Name:</h5>
-                    <input style="width: 100%; margin:5px;" type="text" placeholder="Group name">
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Create Group</button>
-                  </div>
-            </form>
-          </div>
         </div>
-      </div>
-      
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
         crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+    <script src="/static/js/photo.js"></script>
 </body>
 
 </html>
