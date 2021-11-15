@@ -1,6 +1,5 @@
 
 let hoy = new Date();
-var Selfuser = "";
 document.addEventListener('DOMContentLoaded', () => {
     var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
     socket.on('connect', () => {
@@ -27,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             cerrarMessages();
         });
+        
 
        
         
@@ -34,6 +34,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+function crearGrupo(){
+    var group = $('#groupName').val();
+    var newGroup = {    
+        group: group,
+        creator: $('#username').val()
+
+    };
+
+    groupList.push(newGroup);
+    setGroup(groupList);
+    
+}
+
+ 
+ function getGroup(){
+     var storedList = localStorage.getItem('groupList');
+     if(storedList == null){
+        groupList = [];
+ 
+     }else{
+        groupList = JSON.parse(storedList);
+     }    
+     return groupList;
+ }
+ 
+ function setGroup(newGroup){
+    localStorage.setItem('groupList', JSON.stringify(newGroup));
+ }
 
 function setUsername(user) {
    localStorage.setItem("username",user);
@@ -66,13 +94,12 @@ function setMessage(newMessage){
 }
 
 function MostrarChat(name, img, group) {
-    
     $("#Username-message").text(group);
     $("#group-name").val(group);
     $("#img-message").attr("src", img);
     var list = getMessage();
     for(var i = 0; i < list.length; i++){
-        console.log(list[i].username+"-"+list[i].group+"-"+list[i].msg);
+        //console.log(list[i].username+"-"+list[i].group+"-"+list[i].msg);
         
         if (list[i].username == name && list[i].group == group) {
             $('#texto-msj').append('<li style="list-style:none; widht:100%; margin:5px; height:auto;"><div style="float:right; max-width:95%; min-width:15%;  padding-left:5px; padding-right:5px; font-family: Arial, Helvetica, sans-serif; background:#ffff;  height:auto; border-radius:5px;">' + '<div style="color:green;">' +"You"+ '</div> <div style="margin-right:5px;">' + list[i].msg + '</div><div style="float:right; color:gray; font-size:10px; margin-top:5px; margin-right:5px;">'+list[i].hour+'</div></div></li>'); // insertamos el contenido de a la lista, es decir el texto-msj.
@@ -103,3 +130,23 @@ function cerrarMessages(){
 
     $('#texto-msj').children().hide();
 }
+
+function buscar() {
+    
+    var g  = getGroup();
+    alert(g.length);
+
+    for(var i = 0; i < g.length; i++){
+        option = document.createElement("option");
+        option.value = g[i].group; 
+        //console.log(g[i].group);                
+        groups.append(option);
+    }
+        
+    
+    
+};
+
+
+
+

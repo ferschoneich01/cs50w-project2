@@ -37,6 +37,10 @@
                                                 style=" margin:0px;  padding:0px; background-color: aliceblue; width: 0px; height: 0px; border: aliceblue 0px;">
                                         </h5>
                                     </div>
+                                    <div class="col-4">
+                                        <a style="margin-top:8px;float:right; width:80px;" class="btn button btn-secondary" href="/logout">Logout</a>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -47,8 +51,11 @@
                     <div class="col">
                         <div class="row">
                             <div class="col">
-                                <input style="margin-top: 5px; height: 38px; width: 108%; border-radius: 20px;"
+                                <input list="groups" id="search" onchange="buscar()" style="margin-top: 5px; height: 38px; width: 108%; border-radius: 20px;"
                                     placeholder="look for your friends " type="text">
+                                    <datalist id="groups">
+                                        <option value="Chrome"> 
+                                    </datalist>
                             </div>
                             <div class="col-4" style="font-size: small; margin-top: 5px;">
                                 <button data-bs-toggle="modal" data-bs-target="#exampleModal"
@@ -161,7 +168,7 @@
                 <form action="/create-group" method="post">
                     <div class="modal-body">
                         <h5>Name:</h5>
-                        <input style="width: 100%; margin:5px;" type="text" placeholder="Group name">
+                        <input id="groupName" style="width: 100%; margin:5px;" type="text" placeholder="Group name">
                         <!-- CONTAINER CLASS TO CENTER THE CARD ELEMENT -->
                         <div class="col">
                             <div class="card">
@@ -188,7 +195,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Create Group</button>
+                        <button onclick="crearGrupo()" type="submit" class="btn btn-primary">Create Group</button>
                     </div>
                 </form>
             </div>
@@ -202,6 +209,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
     <script src="/static/js/photo.js"></script>
+    
 </body>
 
 </html>
