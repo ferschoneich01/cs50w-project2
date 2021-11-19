@@ -1,5 +1,5 @@
 import os
-
+import time
 from flask import Flask, render_template, url_for,request,flash, redirect, session
 from flask_socketio import SocketIO, emit,send,leave_room,join_room
 from flask_session import Session
@@ -30,6 +30,33 @@ db = scoped_session(sessionmaker(bind=engine))
 def handle_Message(msg): # Comenzamos a manejar el msj.  
     send(msg, broadcast = True)
 
+@socketio.on('incoming-msg')
+def on_message(data):
+    """Broadcast messages"""
+
+    msg = data["msg"]
+    username = data["username"]
+    room = data["room"]
+    # Set timestamp
+    time_stamp = time.strftime('%b-%d %I:%M%p', time.localtime())
+    send({"username": username, "msg": msg, "time_stamp": time_stamp}, room=room)
+
+
+@socketio.on('join')
+def on_join(data):
+    username = data['username']
+    room = data['room']
+    join_room(room)
+    send(username + ' has entered the room.', to=room)
+
+@socketio.on('leave')
+def on_leave(data):
+    username = data['username']
+    room = data['room']
+    leave_room(room)
+    send(username + ' has left the room.', to=room)
+
+
 @app.route("/")
 @login_required
 def index():
@@ -53,12 +80,15 @@ def createGroup():
         groupName = request.form.get("groupName")
         photo_group = request.form.get("photo")
         id_user = session["id_user"]
+        print(groupName)
+        print(photo_group)
+        print(id_user)
         # Query database for username
-        db.execute("INSERT INTO groups (name,photo) VALUES ('"+str(groupName)+"','"+str(photo_group)+"')")
+        """db.execute("INSERT INTO groups (name,photo) VALUES ('"+str(groupName)+"','"+str(photo_group)+"')")
         db.commit()
         group = db.execute("SELECT * FROM groups WHERE name = '"+str(groupName)+"'").fetchall()
         db.execute("INSERT INTO user_group (id_user,id_group) VALUES ("+str(id_user)+","+str(group[0]["id_group"])+")")
-        db.commit()  
+        db.commit()  """
         # Redirect user to home page
         
 

@@ -4,6 +4,15 @@ document.addEventListener('DOMContentLoaded', () => {
     var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
     socket.on('connect', () => {
 
+        /*socket.on('incoming-msg', function (data) { //la conexion del cliente a servidor.
+            var hour = hoy.getHours() + ':' + hoy.getMinutes();
+            if (localStorage.getItem("username") == $('#username').val()) {
+                $('#texto-msj').append('<li style="list-style:none; widht:100%; margin:5px; height:auto;"><div style="float:right; max-width:95%; min-width:15%;  padding-left:5px; padding-right:5px; font-family: Arial, Helvetica, sans-serif; background:#ffff;  height:auto; border-radius:5px;">' + '<div style="color:green;">' +"You"+ '</div> <div style="margin-right:5px;">' + data.msg + '</div><div style="float:right; color:gray; font-size:10px; margin-top:5px; margin-right:5px;">'+hour+'</div></div></li>'); // insertamos el contenido de a la lista, es decir el texto-msj.
+            } else {
+                $('#texto-msj').append('<li style="list-style:none; margin:5px; widht:100%; height:auto;"><div style="float:left; max-width:95%; min-width:15%; padding-left:5px; padding-right:5px; font-family: Arial, Helvetica, sans-serif; background:#ffff; height:auto; border-radius:5px;">' + '<div style="color:blue;">' + localStorage.getItem("username") + '</div> <div style="margin-right:5px;">' + data.msg + '</div><div style="float:right; color:gray; font-size:10px; margin-top:5px; margin-right:5px;">'+hour+'</div></div></li>'); // insertamos el contenido de a la lista, es decir el texto-msj.
+            }
+        });*/
+        
         socket.on('message', function (msg) { //la conexion del cliente a servidor.
             var hour = hoy.getHours() + ':' + hoy.getMinutes();
             if (localStorage.getItem("username") == $('#username').val()) {
@@ -14,16 +23,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         $('#Enviar').on('click', function () { //nuestro boton tendra la funcion al momento de clikear de mandar ese contenido a texto-msj
+            /*socket.send('incoming-msg', {'msg': $('#mi-msj').val(),
+            'username': $('#username').val(), 'room': $('#group-name').val()});*/
+            
             socket.send($('#mi-msj').val());
             $('#mi-msj').val('');
+
+
         });
 
         $('#Salir').on('click', function (){
-            socket.emit('left', {}, function () {
-                socket.disconnect();
-                // go back to the login page
-                
-            });
+            
             cerrarMessages();
         });
         
@@ -34,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
 function crearGrupo(){
     var group = $('#groupName').val();
     var newGroup = {    
@@ -111,17 +122,17 @@ function MostrarChat(name, img, group) {
        
     }
     $("#message").children().show();
-
+    //joinRoom(name,group);
 }
 
 window.onpageshow = function () {
-    //localStorage.removeItem('MessageList');
+    localStorage.removeItem('MessageList');
     cerrarMessages();
 }
 
 function cerrarMessages(){
     var ancho = window.innerWidth;
-
+   // leaveRoom($("#username").val(),$("#group-name").val());
     if (ancho < 600) {
         $("#message").hide();
     } else {
@@ -129,6 +140,7 @@ function cerrarMessages(){
     }
 
     $('#texto-msj').children().hide();
+    
 }
 
 function buscar() {
@@ -147,6 +159,15 @@ function buscar() {
     
 };
 
+function joinRoom(username,room) {
 
+    // Join room
+    socket.emit('join', {'username': username, 'room': room});
+
+}
+
+function leaveRoom(username,room) {
+    socket.emit('leave', {'username': username, 'room': room});
+}
 
 
