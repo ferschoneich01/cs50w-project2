@@ -63,11 +63,7 @@ a:active {
     #card-friends{
         position:relative;
         width: 100%;
-        
-    }
-
-    body{
-        background: chartreuse;
+        margin-left: 10px;
     }
 
     .title {
