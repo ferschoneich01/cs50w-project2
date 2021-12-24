@@ -183,9 +183,9 @@ def register():
         password = generate_password_hash(request.form.get("password"))
         fullname = request.form.get("fullname")
         email = request.form.get("email")
-        sex = request.form.get("select")
+        sex = request.form.get("sex")
         image = request.form.get("image")
-
+        #print(username+"-"+password+"-"+fullname+"-"+email+"-"+sex+"-"+image)
         # Query database for username
         db.execute("INSERT INTO users (username,password,fullname,email,sex,image) VALUES ('"+str(username)+"','"+str(password)+"','"+str(fullname)+"','"+str(email)+"','"+str(sex)+"','"+str(image)+"')")
         db.commit()
