@@ -5,8 +5,7 @@ cachelib
 certifi                           
 charset-normalizer                
 click                             
-distlib                           
-Django                            
+distlib                                                       
 filelock                          
 Flask                             
 Flask-MySQLdb                     
