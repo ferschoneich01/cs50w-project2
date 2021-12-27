@@ -53,7 +53,7 @@ def on_leave(data):
     emit("incoming-log-leave",username + ' has left the room.', to=room)
 
 
-@app.route("/home", methods=["GET","POST"])
+@app.route("/")
 @login_required
 def index():
     rows = db.execute("SELECT * FROM users WHERE id_user = "+str(session["id_user"])+"").fetchall()
@@ -78,7 +78,7 @@ def joingroup():
         rows = db.execute("SELECT * FROM groups WHERE name = '"+group+"'").fetchall()
         db.execute("INSERT INTO user_group (id_user,id_group) VALUES ("+str(session["id_user"])+","+str(rows[0]["id_group"])+")")
         db.commit()
-        return redirect("/home")   
+        return redirect("/")   
 
 @app.route("/create-group", methods=["POST","GET"])
 @login_required
@@ -102,7 +102,7 @@ def createGroup():
             # Redirect user to home page
         
 
-    return redirect("/home")
+    return redirect("/")
 
 @app.route("/login", methods=["POST","GET"])
 def login():
@@ -136,7 +136,7 @@ def login():
         session["id_user"] = rows[0]["id_user"]
         
         # Redirect user to home page
-        return redirect("/home")
+        return redirect("/")
     else:
         return render_template("login.html")
 
@@ -191,7 +191,7 @@ def register():
         db.commit()
         # Redirect user to home page
         
-        return redirect("/home")
+        return redirect("/")
     else:
         return render_template("register.html")
 
