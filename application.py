@@ -53,7 +53,7 @@ def on_leave(data):
     emit("incoming-log-leave",username + ' has left the room.', to=room)
 
 
-@app.route("/home")
+@app.route("/home", methods=["GET","POST"])
 @login_required
 def index():
     rows = db.execute("SELECT * FROM users WHERE id_user = "+str(session["id_user"])+"").fetchall()
