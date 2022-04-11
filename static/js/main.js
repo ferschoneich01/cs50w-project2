@@ -4,7 +4,7 @@ let hoy = new Date();
 var flag = false;
 
 document.addEventListener('DOMContentLoaded', () => {
-    socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
+    socket = io.connect('https//' + document.domain + ':' + location.port);
     socket.on('connect', () => {
 
         socket.on('incoming-msg', function (data) { //la conexion del cliente a servidor.
