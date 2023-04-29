@@ -68,7 +68,7 @@ def index():
     groups = db.execute("SELECT * FROM user_group ug INNER JOIN public.group g ON g.id_group = ug.id_group AND ug.id_user = " +
                         str(session["id_user"])+"").fetchall()
     friends = []
-    username = rows[0]["fullname"]
+    username = rows[0]["username"]
     photo = rows[0]["image"]
     session["username"] = username
     i = 0
