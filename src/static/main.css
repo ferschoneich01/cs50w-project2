@@ -123,6 +123,8 @@ a:active {
 }
 
 @media only screen and (max-width : 900px) {
+
+
     .texto-msj2{
         background:rgb(211, 210, 209);
         height:95%;
@@ -133,6 +135,10 @@ a:active {
     }
 
     .modal-dialog{
-        width:100%;
+        padding-left:2px;
+        padding-right:2px;
+    }
+    .content-msg{
+        margin:2px;
     }
 }
