@@ -44,16 +44,16 @@ def on_message(data):
 
 @socketio.on('join')
 def on_join(data):
-    username = data['username']
-    room = data['room']
+    username = session['username']
+    room = session['room']
     join_room(room)
     emit("incoming-log-join", username + ' esta en linea.', to=room)
 
 
 @socketio.on('leave')
 def on_leave(data):
-    username = data['username']
-    room = data['room']
+    username = session['username']
+    room = session['room']
     leave_room(room)
     emit("incoming-log-leave", username + ' esta desconectado.', to=room)
 
@@ -68,6 +68,7 @@ def index():
     friends = []
     username = rows[0]["fullname"]
     photo = rows[0]["image"]
+    session["username"] = username
     i = 0
     for g in groups:
         friends.append([groups[i]["photo"], groups[i]["name"]])
