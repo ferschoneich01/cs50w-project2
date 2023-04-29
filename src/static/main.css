@@ -55,7 +55,12 @@ a:active {
 .chat-hover :hover {
     background-color: rgb(212, 209, 209);
 }
-c
+
+#Messager .row{
+    margin-right:0;
+    margin-left:0;
+}
+
 .container-main{
     width: 100%;
     height: 70%;
