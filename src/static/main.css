@@ -70,6 +70,14 @@ a:active {
     padding-left:2px !important;
 }
 
+.texto-msj{
+    background:rgb(211, 210, 209);
+    height:95%;
+    width:100%;
+    overflow:auto;
+    border: 1px solid black;
+    margin-top: 8px;
+}
 
 .contentchats{
     height:80%;
