@@ -34,7 +34,8 @@ def on_message(data):
     """Broadcast messages"""
 
     msg = data["msg"]
-    username = data["username"]
+    if data['username'] == None:
+        username = session['username']
     room = data["room"]
     # Set timestamp
     time_stamp = time.strftime('%b-%d %I:%M%p', time.localtime())
@@ -44,7 +45,10 @@ def on_message(data):
 
 @socketio.on('join')
 def on_join(data):
-    username = data['username']
+
+    if data['username'] == None:
+        username = session['username']
+
     room = data['room']
     join_room(room)
     emit("incoming-log-join", username + ' esta en linea.', to=room)
@@ -52,7 +56,8 @@ def on_join(data):
 
 @socketio.on('leave')
 def on_leave(data):
-    username = data['username']
+    if data['username'] == None:
+        username = session['username']
     room = data['room']
     leave_room(room)
     emit("incoming-log-leave", username + ' esta desconectado.', to=room)
