@@ -69,6 +69,10 @@ a:active {
 #Messager{
     height:100%;
 }
+
+#Messager .row{
+    position:relative;
+}
 .mobile-barcontrol{
     padding-left:2px !important;
 }
