@@ -63,7 +63,7 @@ a:active {
 
 .container-main{
     width: 100%;
-    height: 70%;
+    height: 100%;
 }
 
 #Messager{
@@ -71,6 +71,12 @@ a:active {
 }
 .mobile-barcontrol{
     padding-left:2px !important;
+}
+
+.inputchat{
+    position:relative;
+    width: 100%;
+    margin:0px;
 }
 
 .texto-msj{
