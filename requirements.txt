@@ -8,17 +8,13 @@ click
 distlib                                                       
 filelock                          
 Flask                             
-Flask-MySQLdb                     
 Flask-Session                     
 Flask-SocketIO                    
 greenlet                          
-gunicorn                          
-idna                              
+gunicorn                              
 itsdangerous                      
 Jinja2                            
-MarkupSafe                        
-mysql-connector-python            
-mysqlclient                       
+MarkupSafe                                           
 Pillow                            
 pip                               
 platformdirs                      
@@ -34,4 +30,4 @@ SQLAlchemy
 sqlparse                          
 urllib3                           
 virtualenv                        
-Werkzeug                          
+Werkzeug                         

@@ -3,7 +3,7 @@ let hoy = new Date();
 var flag = false;
 
 document.addEventListener("DOMContentLoaded", () => {
-  socket = io.connect("https://moonmessage.herokuapp.com/");
+  socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
   socket.on("connect", () => {
     socket.on("incoming-msg", function (data) {
       //la conexion del cliente a servidor.
@@ -13,24 +13,24 @@ document.addEventListener("DOMContentLoaded", () => {
         if (localStorage.getItem("username") == $("#username").val()) {
           $("#texto-msj2").append(
             '<li style="list-style:none; widht:100%; margin:5px; height:auto;"><div style="float:right; max-width:95%; min-width:15%;  padding-left:5px; padding-right:5px; font-family: Arial, Helvetica, sans-serif; background:#ffff;  height:auto; border-radius:5px;">' +
-              '<div style="color:green;">' +
-              "You" +
-              '</div> <div style="margin-right:5px;">' +
-              data.msg +
-              '</div><div style="float:right; color:gray; font-size:10px; margin-top:5px; margin-right:5px;">' +
-              data.time_stamp +
-              "</div></div></li>"
+            '<div style="color:green;">' +
+            "You" +
+            '</div> <div style="margin-right:5px;">' +
+            data.msg +
+            '</div><div style="float:right; color:gray; font-size:10px; margin-top:5px; margin-right:5px;">' +
+            data.time_stamp +
+            "</div></div></li>"
           ); // insertamos el contenido de a la lista, es decir el texto-msj.
         } else {
           $("#texto-msj2").append(
             '<li style="list-style:none; margin:5px; widht:100%; height:auto;"><div style="float:left; max-width:95%; min-width:15%; padding-left:5px; padding-right:5px; font-family: Arial, Helvetica, sans-serif; background:#ffff; height:auto; border-radius:5px;">' +
-              '<div style="color:blue;">' +
-              localStorage.getItem("username") +
-              '</div> <div style="margin-right:5px;">' +
-              data.msg +
-              '</div><div style="float:right; color:gray; font-size:10px; margin-top:5px; margin-right:5px;">' +
-              data.time_stamp +
-              "</div></div></li>"
+            '<div style="color:blue;">' +
+            localStorage.getItem("username") +
+            '</div> <div style="margin-right:5px;">' +
+            data.msg +
+            '</div><div style="float:right; color:gray; font-size:10px; margin-top:5px; margin-right:5px;">' +
+            data.time_stamp +
+            "</div></div></li>"
           ); // insertamos el contenido de a la lista, es decir el texto-msj.
         }
         //Guardar Mensaje
@@ -47,24 +47,24 @@ document.addEventListener("DOMContentLoaded", () => {
         if (localStorage.getItem("username") == $("#username").val()) {
           $("#texto-msj").append(
             '<li style="list-style:none; widht:100%; margin:5px; height:auto;"><div style="float:right; max-width:95%; min-width:15%;  padding-left:5px; padding-right:5px; font-family: Arial, Helvetica, sans-serif; background:#ffff;  height:auto; border-radius:5px;">' +
-              '<div style="color:green;">' +
-              "You" +
-              '</div> <div style="margin-right:5px;">' +
-              data.msg +
-              '</div><div style="float:right; color:gray; font-size:10px; margin-top:5px; margin-right:5px;">' +
-              data.time_stamp +
-              "</div></div></li>"
+            '<div style="color:green;">' +
+            "You" +
+            '</div> <div style="margin-right:5px;">' +
+            data.msg +
+            '</div><div style="float:right; color:gray; font-size:10px; margin-top:5px; margin-right:5px;">' +
+            data.time_stamp +
+            "</div></div></li>"
           ); // insertamos el contenido de a la lista, es decir el texto-msj.
         } else {
           $("#texto-msj").append(
             '<li style="list-style:none; margin:5px; widht:100%; height:auto;"><div style="float:left; max-width:95%; min-width:15%; padding-left:5px; padding-right:5px; font-family: Arial, Helvetica, sans-serif; background:#ffff; height:auto; border-radius:5px;">' +
-              '<div style="color:blue;">' +
-              localStorage.getItem("username") +
-              '</div> <div style="margin-right:5px;">' +
-              data.msg +
-              '</div><div style="float:right; color:gray; font-size:10px; margin-top:5px; margin-right:5px;">' +
-              data.time_stamp +
-              "</div></div></li>"
+            '<div style="color:blue;">' +
+            localStorage.getItem("username") +
+            '</div> <div style="margin-right:5px;">' +
+            data.msg +
+            '</div><div style="float:right; color:gray; font-size:10px; margin-top:5px; margin-right:5px;">' +
+            data.time_stamp +
+            "</div></div></li>"
           ); // insertamos el contenido de a la lista, es decir el texto-msj.
         }
         //Guardar Mensaje
@@ -170,8 +170,8 @@ document.addEventListener("DOMContentLoaded", () => {
             $("#tableresult").children().hide();
             $("#tableresult").append(
               "<tr><td>" +
-                g[i].group +
-                '<button type="submit" class="btn button btn-success" style="margin-left:5px; border-radius:25px;">+</button></td></tr>'
+              g[i].group +
+              '<button type="submit" class="btn button btn-success" style="margin-left:5px; border-radius:25px;">+</button></td></tr>'
             );
           } else {
             $("#tableresult").children().hide();
@@ -230,24 +230,24 @@ function MostrarChat(name, img, group) {
       if (list[i].username == name && list[i].group == group) {
         $("#texto-msj2").append(
           '<li style="list-style:none; widht:100%; margin:5px; height:auto;"><div style="float:right; max-width:95%; min-width:15%;  padding-left:5px; padding-right:5px; font-family: Arial, Helvetica, sans-serif; background:#ffff;  height:auto; border-radius:5px;">' +
-            '<div style="color:green;">' +
-            "You" +
-            '</div> <div style="margin-right:5px;">' +
-            list[i].msg +
-            '</div><div style="float:right; color:gray; font-size:10px; margin-top:5px; margin-right:5px;">' +
-            list[i].hour +
-            "</div></div></li>"
+          '<div style="color:green;">' +
+          "You" +
+          '</div> <div style="margin-right:5px;">' +
+          list[i].msg +
+          '</div><div style="float:right; color:gray; font-size:10px; margin-top:5px; margin-right:5px;">' +
+          list[i].hour +
+          "</div></div></li>"
         ); // insertamos el contenido de a la lista, es decir el texto-msj.
       } else if (list[i].username != name && list[i].group == group) {
         $("#texto-msj2").append(
           '<li style="list-style:none; margin:5px; widht:100%; height:auto;"><div style="float:left; max-width:95%; min-width:15%; padding-left:5px; padding-right:5px; font-family: Arial, Helvetica, sans-serif; background:#ffff; height:auto; border-radius:5px;">' +
-            '<div style="color:blue;">' +
-            list[i].username +
-            '</div> <div style="margin-right:5px;">' +
-            list[i].msg +
-            '</div><div style="float:right; color:gray; font-size:10px; margin-top:5px; margin-right:5px;">' +
-            list[i].hour +
-            "</div></div></li>"
+          '<div style="color:blue;">' +
+          list[i].username +
+          '</div> <div style="margin-right:5px;">' +
+          list[i].msg +
+          '</div><div style="float:right; color:gray; font-size:10px; margin-top:5px; margin-right:5px;">' +
+          list[i].hour +
+          "</div></div></li>"
         ); // insertamos el contenido de a la lista, es decir el texto-msj.
       }
     }
@@ -267,24 +267,24 @@ function MostrarChat(name, img, group) {
       if (list[i].username == name && list[i].group == group) {
         $("#texto-msj").append(
           '<li style="list-style:none; widht:100%; margin:5px; height:auto;"><div style="float:right; max-width:95%; min-width:15%;  padding-left:5px; padding-right:5px; font-family: Arial, Helvetica, sans-serif; background:#ffff;  height:auto; border-radius:5px;">' +
-            '<div style="color:green;">' +
-            "You" +
-            '</div> <div style="margin-right:5px;">' +
-            list[i].msg +
-            '</div><div style="float:right; color:gray; font-size:10px; margin-top:5px; margin-right:5px;">' +
-            list[i].hour +
-            "</div></div></li>"
+          '<div style="color:green;">' +
+          "You" +
+          '</div> <div style="margin-right:5px;">' +
+          list[i].msg +
+          '</div><div style="float:right; color:gray; font-size:10px; margin-top:5px; margin-right:5px;">' +
+          list[i].hour +
+          "</div></div></li>"
         ); // insertamos el contenido de a la lista, es decir el texto-msj.
       } else if (list[i].username != name && list[i].group == group) {
         $("#texto-msj").append(
           '<li style="list-style:none; margin:5px; widht:100%; height:auto;"><div style="float:left; max-width:95%; min-width:15%; padding-left:5px; padding-right:5px; font-family: Arial, Helvetica, sans-serif; background:#ffff; height:auto; border-radius:5px;">' +
-            '<div style="color:blue;">' +
-            list[i].username +
-            '</div> <div style="margin-right:5px;">' +
-            list[i].msg +
-            '</div><div style="float:right; color:gray; font-size:10px; margin-top:5px; margin-right:5px;">' +
-            list[i].hour +
-            "</div></div></li>"
+          '<div style="color:blue;">' +
+          list[i].username +
+          '</div> <div style="margin-right:5px;">' +
+          list[i].msg +
+          '</div><div style="float:right; color:gray; font-size:10px; margin-top:5px; margin-right:5px;">' +
+          list[i].hour +
+          "</div></div></li>"
         ); // insertamos el contenido de a la lista, es decir el texto-msj.
       }
     }
