@@ -44,7 +44,7 @@ def on_message(data):
 
 @socketio.on('join')
 def on_join(data):
-    print(data['username'])
+    print(len(data['username']))
     username = data['username']
 
     room = data['room']
