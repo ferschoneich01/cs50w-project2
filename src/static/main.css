@@ -58,6 +58,9 @@ a:active {
 
 /*RESPONSIVE DESDING*/
 
+.content-mobilechat{
+    height: 100%;
+}
 
 @media (max-width: 600px) {
     #card-friends{
@@ -70,4 +73,5 @@ a:active {
         color: black;
     }
 }
-  
+
+
