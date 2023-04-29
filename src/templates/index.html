@@ -187,25 +187,28 @@
                         </div>
                         <!--end User perfil-->
 
-                        <div id="texto-msj2" class="card Scroll"
-                            style=" margin:5px; background:rgb(211, 210, 209); height:400px; width:95%; overflow:auto; border: 1px solid black;  margin-top: 8px;">
-                            <!--MENSAJES-->
+                        <div class="row content-msg">
+                            <div id="texto-msj2" class="card Scroll texto-msj">
+                                <!--MENSAJES-->
 
+                            </div>
                         </div>
                     </div>
-                    <div style="position:absolute; width: 100%; top: 470px; margin:0px;">
-                        <div class="row">
-                            <div class="col">
-                                <input id="mi-msj2" style="width: 100%; margin: 7px; height: 35px; border-radius: 20px;"
-                                    type="text" value="" placeholder="write your message">
-                            </div>
-                            <div class="col-2" style="padding-left: 0px;">
-                                <button class="btn button btn-success" id="Enviar2"
-                                    onclick="setUsername('{{username}}')" type="submit"
-                                    style="margin-right:5px; margin-top:5px; width: 50px; height: 40px; border-radius: 25px;"><img
-                                        style="height: 25px;"
-                                        src="https://res.cloudinary.com/dzlbg8ni6/image/upload/v1635299935/send_120237_khktkv.png"
-                                        alt=""></button>
+                    <div class="row">
+                        <div class="inputchat" style="padding-left:0;">
+                            <div class="row">
+                                <div class="col" style="padding-left:0;">
+                                    <input id="mi-msj"
+                                        style="width: 100%; margin-top: 7px; height: 35px; border-radius: 20px;"
+                                        type="text" value="" placeholder="write your message">
+                                </div>
+                                <div class="col-1" style="padding-left: 0px; padding-right:10px;">
+                                    <button class="btn button btn-success" id="Enviar"
+                                        onclick="setUsername('{{username}}')" type="submit"
+                                        style="margin-top:5px; width: 80px; height: 40px; border-radius: 20px;"><img
+                                            src="https://res.cloudinary.com/dzlbg8ni6/image/upload/v1635299935/send_120237_khktkv.png"
+                                            alt=""></button>
+                                </div>
                             </div>
                         </div>
                     </div>
