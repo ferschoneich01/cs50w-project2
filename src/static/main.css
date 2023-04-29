@@ -141,7 +141,8 @@ a:active {
     .content-msg{
         padding-left:5px;
         padding-right:5px;
-        height:85%;
+        height: 84%;
+        margin-bottom: 2%;
     }
 
     .content-msg .row{
