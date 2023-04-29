@@ -123,12 +123,6 @@ a:active {
 }
 
 @media only screen and (max-width : 900px) {
-
-    #Messager .row{
-        paddin-left:5px;
-        paddin-right:5px;
-    }
-
     .texto-msj2{
         background:rgb(211, 210, 209);
         height:95%;
