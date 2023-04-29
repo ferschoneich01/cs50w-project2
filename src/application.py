@@ -44,16 +44,16 @@ def on_message(data):
 
 @socketio.on('join')
 def on_join(data):
-    username = session['username']
-    room = session['room']
+    username = data['username']
+    room = data['room']
     join_room(room)
     emit("incoming-log-join", username + ' esta en linea.', to=room)
 
 
 @socketio.on('leave')
 def on_leave(data):
-    username = session['username']
-    room = session['room']
+    username = data['username']
+    room = data['room']
     leave_room(room)
     emit("incoming-log-leave", username + ' esta desconectado.', to=room)
 
