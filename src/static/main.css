@@ -143,4 +143,12 @@ a:active {
         padding-right:5px;
         height:85%;
     }
+
+    .content-msg .row{
+        padding-left:0;
+    }
+
+    .content-msg li{
+        padding-left:2px;
+    }
 }
