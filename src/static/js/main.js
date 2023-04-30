@@ -43,6 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         MsgList.push(newMessage);
         setMessage(MsgList);
+
+        
       } else {
         if (localStorage.getItem("username") == $("#username").val()) {
           $("#texto-msj").append(
