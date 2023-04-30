@@ -10,8 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
       var ancho = window.innerWidth;
 
       if (ancho < 600) {
-        if (localStorage.getItem("username") == $("#username").val()) {
-          console.log(""+$("#username").val());
+        if (localStorage.getItem("username") == data.username) {
+          console.log("" + data.username);
           $("#texto-msj2").append(
             '<li style="list-style:none; widht:100%; margin:5px; height:auto;"><div style="float:right; max-width:95%; min-width:15%;  padding-left:5px; padding-right:5px; font-family: Arial, Helvetica, sans-serif; background:#ffff;  height:auto; border-radius:5px;">' +
             '<div style="color:green;">' +
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
           $("#texto-msj2").append(
             '<li style="list-style:none; margin:5px; widht:100%; height:auto;"><div style="float:left; max-width:95%; min-width:15%; padding-left:5px; padding-right:5px; font-family: Arial, Helvetica, sans-serif; background:#ffff; height:auto; border-radius:5px;">' +
             '<div style="color:blue;">' +
-            localStorage.getItem("username") +
+            data.username +
             '</div> <div style="margin-right:5px;">' +
             data.msg +
             '</div><div style="float:right; color:gray; font-size:10px; margin-top:5px; margin-right:5px;">' +
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
       } else {
-        if (localStorage.getItem("username") == $("#username").val()) {
+        if (localStorage.getItem("username") == data.username) {
           $("#texto-msj").append(
             '<li style="list-style:none; widht:100%; margin:5px; height:auto;"><div style="float:right; max-width:95%; min-width:15%;  padding-left:5px; padding-right:5px; font-family: Arial, Helvetica, sans-serif; background:#ffff;  height:auto; border-radius:5px;">' +
             '<div style="color:green;">' +
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
           $("#texto-msj").append(
             '<li style="list-style:none; margin:5px; widht:100%; height:auto;"><div style="float:left; max-width:95%; min-width:15%; padding-left:5px; padding-right:5px; font-family: Arial, Helvetica, sans-serif; background:#ffff; height:auto; border-radius:5px;">' +
             '<div style="color:blue;">' +
-            localStorage.getItem("username") +
+            data.username +
             '</div> <div style="margin-right:5px;">' +
             data.msg +
             '</div><div style="float:right; color:gray; font-size:10px; margin-top:5px; margin-right:5px;">' +
