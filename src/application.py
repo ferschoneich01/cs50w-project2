@@ -68,7 +68,6 @@ def index():
     friends = []
     username = rows[0]["username"]
     photo = rows[0]["image"]
-    session["username"] = username
     i = 0
     for g in groups:
         friends.append([groups[i]["photo"], groups[i]["name"]])
@@ -156,7 +155,6 @@ def login():
 
         # Remember which user has logged in
         session["id_user"] = rows[0]["id_user"]
-        session["username"] = username
 
         # Redirect user to home page
         return redirect("/")
