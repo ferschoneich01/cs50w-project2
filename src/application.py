@@ -217,7 +217,7 @@ def register():
         image = request.form.get("image")
         # print(username+"-"+password+"-"+fullname+"-"+email+"-"+sex+"-"+image)
         # Query database for username
-        db.execute("INSERT INTO users (username,password,fullname,email,sex,image) VALUES ('"+str(username) +
+        db.execute("INSERT INTO users (username,password,fullname,email,sex,image) VALUES ('"+str(username)+
                    "','"+str(password)+"','"+str(fullname)+"','"+str(email)+"','"+str(sex)+"','"+str(image)+"')")
         db.commit()
         # Redirect user to home page
