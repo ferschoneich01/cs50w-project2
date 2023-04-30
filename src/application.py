@@ -34,7 +34,7 @@ def on_message(data):
     """Broadcast messages"""
     print(data['username'])
     msg = data["msg"]
-    username = data['username']
+    username = session['username']
     room = data["room"]
     # Set timestamp
     time_stamp = time.strftime('%b-%d %I:%M%p', time.localtime())
@@ -44,9 +44,7 @@ def on_message(data):
 
 @socketio.on('join')
 def on_join(data):
-    print(len(data['username']))
-    username = data['username']
-
+    username = session['username']
     room = data['room']
     join_room(room)
     emit("incoming-log-join", username + ' esta en linea.', to=room)
@@ -54,7 +52,6 @@ def on_join(data):
 
 @socketio.on('leave')
 def on_leave(data):
-    username = data['username']
     room = data['room']
     leave_room(room)
     emit("incoming-log-leave", username + ' esta desconectado.', to=room)
@@ -158,6 +155,7 @@ def login():
 
         # Remember which user has logged in
         session["id_user"] = rows[0]["id_user"]
+        session["username"] = username
 
         # Redirect user to home page
         return redirect("/")
