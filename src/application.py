@@ -53,6 +53,7 @@ def on_join(data):
 
 @socketio.on('leave')
 def on_leave(data):
+    username = data['username']
     session["username"] = data['username']
     room = data['room']
     leave_room(room)
