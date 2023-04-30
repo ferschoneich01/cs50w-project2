@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (ancho < 600) {
         if (localStorage.getItem("username") == $("#username").val()) {
+          console.log(""+$("#username").val());
           $("#texto-msj2").append(
             '<li style="list-style:none; widht:100%; margin:5px; height:auto;"><div style="float:right; max-width:95%; min-width:15%;  padding-left:5px; padding-right:5px; font-family: Arial, Helvetica, sans-serif; background:#ffff;  height:auto; border-radius:5px;">' +
             '<div style="color:green;">' +
@@ -44,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
         MsgList.push(newMessage);
         setMessage(MsgList);
 
-        
+
       } else {
         if (localStorage.getItem("username") == $("#username").val()) {
           $("#texto-msj").append(
